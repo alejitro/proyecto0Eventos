@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+<meta charset="UTF-8">
+<title>Eventos</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="{% static "js/register.js"%}"></script>
+
+</head>
+
+<body>
+
+<h1 style="text-align : center;">Gestion de Eventos</h1>
+  {% if sesion %}
+
+    <h2 style="text-align : center;">Sesion iniciada</h2>
+
+    <h3>Eventos </h3>
+
+  {% else %}
+    <h2 style="text-align : center;">Sesion no iniciada</h2>
+
+    <h3 style="text-align : center;"> Inicio de sesion</h3>
+
+    <form action="" style="text-align : center;">
+        email:<br>
+        <input type="text" name="email">
+        <br>
+        password:<br>
+        <input type="text" name="lastname">
+        <br><br>
+        <input type="submit" value="Submit"><br><br>
+        <a href="/registro/"> Registrarse  </a><br><br>
+        <a href="//">  Olvido su contrasena?</a><br><br>
+
+    </form>
+
+
+  {% endif %}
+
+</body>
+
+</html>

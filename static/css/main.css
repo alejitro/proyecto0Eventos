@@ -1,0 +1,19 @@
+body{
+    background-color: #777;
+
+}
+
+.title{
+    color: #ff0000;
+}
+
+#tituloPrincipal{
+    color: #00ff00;
+    font-size: 30px;
+    font-family: fantasy;
+    padding: 26px 15px;
+    cursor: default;
+    font-weight: 200;
+    border-color: firebrick;
+    border-width: 20px;
+}
