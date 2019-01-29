@@ -20,6 +20,6 @@ from eventos import views, vajax
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index/', views.index),
-    url(r'^registro/', views.registro),
-    url(r'^registrar/', vajax.registrar),
+    url(r'^registro/', views.register),
+    url(r'^eliminar/', vajax.eliminar),
 ]

@@ -18,11 +18,25 @@ class Event(models.Model):
     finish_date=models.DateTimeField()
     type=models.ForeignKey(Type, on_delete=models.CASCADE)
 
-    """
-    def eventDetails(self):
-        return {
-            'eventName': self.events.name,
-            'eventStartDate': self.events.start_date,
-            'eventPlace': self.events.place,
-        }
-    """
+""""
+    def save(self, *args, **kwargs):
+
+
+        super().save(*args, **kwargs)  # Call the "real" save() method.
+
+    def modify(self, **kwargs):
+        try:
+            updatedFields = []
+            for key in list(kwargs):
+                if kwargs[key]:
+                    if key == "residencePlace":
+                        value = ResidencePlace(id = kwargs[key])
+                    else:
+                        value = kwargs[key]
+                    setattr(self, key, value)
+                    updatedFields.append(key)
+            self.save(update_fields = updatedFields)
+        except:
+            return False
+        return True
+"""
