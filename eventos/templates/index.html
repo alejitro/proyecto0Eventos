@@ -7,8 +7,18 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
     <script src="{% static "js/constants.js"%}"></script>
     <script src="{% static "js/index.js"%}"></script>
 
@@ -31,11 +41,15 @@
         </tr>
         {%for evento in events.all %}
         <tr>
-            <td><div class="row">
-                <div clas="col-5"> {{ evento.name }} </div>
-                <div clas="col-3"> {{ evento.start_date }} </div>
-                <div clas="col-2"> <a href="/update/{{evento.id}}"<i class="far fa-edit"></i></a> </div>
-                <div clas="col-2"> <div class="delete" todelete="{{evento.id}}"><i class="fas fa-trash-alt"></i></div></div>
+            <td>
+                <div class="container">
+                    <div class="row">
+                    <div clas="col-5"> {{ evento.name }} </div>
+                    <div clas="col-3"> {{ evento.start_date }} </div>
+                    <div clas="col-2"> <a href="/update/{{evento.id}}"<i class="far fa-edit"></i></a> </div>
+                    <div clas="col-2"> <div class="delete" todelete="{{evento.id}}"><i class="fas fa-trash-alt"></i></div></div>
+                </div>
+
             </div></td>
          </tr>
          {% endfor %}
