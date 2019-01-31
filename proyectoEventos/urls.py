@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^loggear/', vajax.login),
     url(r'^logout/', vajax.cerrarSesion),
     path('update/<str:id_ev>', views.modifyEvent),
+    path('details/<str:id_ev>', views.eventDetails),
     url(r'^editar/', vajax.modificarEvento),
     url(r'^create/', views.createEvent),
     url(r'^crear/', vajax.createEvent),
