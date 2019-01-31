@@ -1,10 +1,11 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
 from .models import *
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate,logout
 from django.contrib.auth import login as log
+from django.contrib import auth
 
 @csrf_exempt
 def login(request):
@@ -13,7 +14,6 @@ def login(request):
         password = request.POST.get('password', None)
         user = authenticate(request, username=email, password=password)
 
-        print(user)
         if user is not None:
             log(request, user)
             request.session["user"] = user.id
@@ -22,6 +22,12 @@ def login(request):
             return HttpResponse("El usuario y/o password no coinciden")
 
     return HttpResponse("Metodo no valido")
+
+@csrf_exempt
+def cerrarSesion(request):
+
+    logout(request)
+    return HttpResponse("Exito")
 
 
 @csrf_exempt
@@ -84,24 +90,37 @@ def createEvent(request):
 def modificarEvento(request):
     if request.method == 'POST':
         name = request.POST.get('name')
-        category = request.POST.get('category')
+        _categoryId = request.POST.get('category')
         place = request.POST.get('place')
         address =request.POST.get('address')
         start_date =request.POST.get('start_date')
         finish_date = request.POST.get('finish_date')
-        type =request.POST.get('type')
+        _typeId =request.POST.get('type')
         _eventId = request.POST.get('id')
 
-        # _event=models.Event.objects.get(pk=_eventId)
-        # _event = models.Event.objects.select_for_update().filter(id=_eventId).update(name=name, category=category, place=place,address=address,start_date=start_date,finish_date=end_date,type=type)
+        category = Category.objects.get(pk=_categoryId)
+        type = Type.objects.get(pk=_typeId)
 
-        # context={"event":_event}
-        # return render(request, "modify.html", context)
 
-        if (Event.objects.select_for_update().filter(id=_eventId).update(name=name, category=category, place=place,address=address, start_date=start_date,finish_date=finish_date, type=type)):
+        ev=Event.objects.get(pk=_eventId)
+        ev.name=name
+        ev.category=category
+        ev.place=place
+        ev.address=address
+        ev.start_date=start_date
+        ev.finish_date=finish_date
+        ev.type=type
+        print("eventVajax: "+ _eventId)
+        if(ev.save()):
             return HttpResponse("Exito")
         else:
             return HttpResponse("Error al modificar evento")
 
+        """"
+        if (Event.objects.select_for_update().filter(id=_eventId).update(name=name, category=category, place=place,address=address, start_date=start_date,finish_date=finish_date, type=type)):
+            return HttpResponse("Exito")
+        else:
+            return HttpResponse("Error al modificar evento")
+        """
     else:
         return HttpResponse('Metodo no definido')

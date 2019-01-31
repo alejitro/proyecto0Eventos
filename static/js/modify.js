@@ -5,15 +5,14 @@ $(document).ready(function(){
     var category = $("#category").val();
     var place = $("#place").val();
     var address = $("#address").val();
-    var start_date = $("#start_date").val();
-    var end_date = $("#end_date").val();
+    var start_date = $("#datetimepicker1").find("input").val();
+    var end_date = $("#datetimepicker2").find("input").val();
     var type = $("#eventType").val();
-    var user = 1;
     var wurl=window.location.href;
     var split=wurl.split('/');
     var last=split.length;
     var id=split[last-1];
-    var data ={'id':id, 'person':user, 'name':name,'category':category,'place':place, 'address':address, 'start_date':start_date, 'finish_date':end_date, 'type':type};
+    var data ={'id':id,'name':name,'category':category,'place':place, 'address':address, 'start_date':start_date, 'finish_date':end_date, 'type':type};
     console.log(data);
     var url= BASE_URL + "editar/";
     var request= $.post(url,data);

@@ -28,4 +28,18 @@ $(document).ready(function(){
         }
     });
   });
+  $("#logoutLink").click(function(e){
+    e.preventDefault();
+    var data ={};
+    var url= BASE_URL + "logout/";
+    var request= $.post(url,data);
+    request.done(function(data){
+        console.log(data);
+        if(data=="Exito"){
+            window.location.replace(BASE_URL+"index/");
+        }else{
+            alert("No se pudo finalizar sesion, Intente nuevamente.")
+        }
+    });
+  });
 });

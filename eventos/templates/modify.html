@@ -13,6 +13,7 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="{% static "/css/main.css"%}">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -20,6 +21,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
     <script src="{% static "js/constants.js"%}"></script>
     <script src="{% static "js/modify.js"%}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker({
+                format: 'YYYY-MM-DD HH:MM'
+
+            });
+            $('#datetimepicker2').datetimepicker({
+                format: 'YYYY-MM-DD HH:MM'
+
+            });
+        });
+    </script>
+    <style type="text/css">
+            .table-condensed
+            {
+                width: 200px;
+                height: 10px;
+                font-size: 10px;
+            }
+    </style>
 
 </head>
 
@@ -45,18 +66,35 @@
         <br><br>
         direccion:<input type="text" name="address" id="address" value={{event.address}}>
         <br><br>
-        Fecha Inicio:
-          <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+        <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            Fecha Inicio:<div class='input-group date' id='datetimepicker1'>
+                                <input type='text' class="form-control" value="{{event.start_date}}"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
           </div>
-          <input type="datetime" name="start_date" id="start_date" value={{event.start_date}} >
         <br><br>
-        Fecha Final:<input type="datetime" name="end_date" id="end_date" value={{event.finish_date}}>
+        <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            Fecha Final:<div class='input-group date' id='datetimepicker2'>
+                                <input type='text' class="form-control" value="{{ event.finish_date }}"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </div>
         <br><br>
         Modalidad:
         <select id="eventType" value={{event.type.id}}>
@@ -66,17 +104,8 @@
         </select>
         <br><br>
         <br><br>
-        <input type="submit" value="Submit"><br><br>
+        <input type="submit" value="Enviar"><br><br>
        </form>
-
-
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-                $('#datetimepicker2').datetimepicker();
-
-            });
-        </script>
 
 </body>
 

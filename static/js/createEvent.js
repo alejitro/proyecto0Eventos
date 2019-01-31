@@ -5,8 +5,8 @@ $(document).ready(function(){
     var category = $("#category").val();
     var place = $("#place").val();
     var address = $("#address").val();
-    var start_date = $("#start_date").val();
-    var end_date = $("#end_date").val();
+    var start_date = $("#datetimepicker1").find("input").val();
+    var end_date = $("#datetimepicker2").find("input").val();
     var type = $("#eventType").val();
     var data ={'name':name,'category':category,'place':place, 'address':address, 'start_date':start_date, 'finish_date':end_date, 'type':type};
     console.log(data);
