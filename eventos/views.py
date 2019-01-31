@@ -35,9 +35,9 @@ def register(request):
 
 #Se define endpoint para modificacion de evento
 @csrf_exempt
-def modifyEvent(request,id):
-    print("modifyEventId "+ id)
-    _event=models.Event.objects.get(pk=id)
+def modifyEvent(request,id_ev):
+    print("modifyEventId "+ id_ev)
+    _event=models.Event.objects.get(pk=id_ev)
     print("eventView: " + str(_event))
     _categories=models.Category.objects.all()
     _type= models.Type.objects.all()

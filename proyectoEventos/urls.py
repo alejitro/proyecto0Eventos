@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from eventos import views, vajax
+from django.urls import path
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,7 +27,7 @@ urlpatterns = [
     url(r'^eliminar/', vajax.eliminar),
     url(r'^loggear/', vajax.login),
     url(r'^logout/', vajax.cerrarSesion),
-    url(r'^update/(?P<id>[0-9])', views.modifyEvent),
+    path('update/<str:id_ev>/', views.modifyEvent),
     url(r'^editar/', vajax.modificarEvento),
     url(r'^create/', views.createEvent),
     url(r'^crear/', vajax.createEvent),
