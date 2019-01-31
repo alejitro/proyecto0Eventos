@@ -41,6 +41,10 @@ td {
     font-size: 25px
 }
 
+.form{
+    text-align: center
+}
+
 .container{
-    margin: 0 550px;
+    margin: 0 800px;
 }

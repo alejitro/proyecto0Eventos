@@ -9,9 +9,15 @@ $(document).ready(function(){
     var end_date = $("#datetimepicker2").find("input").val();
     var type = $("#eventType").val();
     var wurl=window.location.href;
-    var split=wurl.split('/');
-    var last=split.length;
-    var id=split[last-1];
+    var splitter=wurl.split('/');
+    var last=splitter.length;
+    var pos=last-1;
+    var id=splitter[pos];
+    console.log("url" + wurl);
+    console.log("split " + splitter);
+    console.log("last " + last);
+    console.log("pos " + pos);
+    console.log("id " + id);
     var data ={'id':id,'name':name,'category':category,'place':place, 'address':address, 'start_date':start_date, 'finish_date':end_date, 'type':type};
     console.log(data);
     var url= BASE_URL + "editar/";

@@ -101,7 +101,7 @@ def modificarEvento(request):
         category = Category.objects.get(pk=_categoryId)
         type = Type.objects.get(pk=_typeId)
 
-
+        """
         ev=Event.objects.get(pk=_eventId)
         ev.name=name
         ev.category=category
@@ -116,11 +116,11 @@ def modificarEvento(request):
         else:
             return HttpResponse("Error al modificar evento")
 
-        """"
+        """
         if (Event.objects.select_for_update().filter(id=_eventId).update(name=name, category=category, place=place,address=address, start_date=start_date,finish_date=finish_date, type=type)):
             return HttpResponse("Exito")
         else:
             return HttpResponse("Error al modificar evento")
-        """
+
     else:
         return HttpResponse('Metodo no definido')
