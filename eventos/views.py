@@ -51,3 +51,11 @@ def createEvent(request):
     _type = models.Type.objects.all()
     context = {'categories':_categories, 'types':_type}
     return render(request, "createEvent.html", context)
+
+@csrf_exempt
+def eventDetails(request,id_ev):
+
+    _event=models.Event.objects.get(pk=id_ev)
+    context={"evento":_event}
+    return render(request, "details.html", context)
+

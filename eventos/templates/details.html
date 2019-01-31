@@ -21,7 +21,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
     <script src="{% static "js/constants.js"%}"></script>
-    <script src="{% static "js/index.js"%}"></script>
 
 
 </head>
@@ -29,59 +28,33 @@
 <body>
 
 <h1 style="text-align : center;">Gestion de Eventos</h1>
-  {% if sesion %}
-    <h2 style="text-align : center;">Bienvenido {{event.person.email}}</h2> <h4 style="text-align: Right"><a href="" id="logoutLink">Cerrar Sesion</a> </h4>
 
-    <h3>Eventos </h3>
+    <h2>Detalles Evento </h2>
       <table>
           <thead>
             <tr>
                 <th scope="col">Nombre de evento</th>
                 <th scope="col">Fecha de inicio evento</th>
                 <th scope="col">Fecha final evento</th>
-                <th scope="col">Fecha de creacion</th>
-                <th scope="col">Editar</th>
-                <th scope="col">Detalles</th>
-                <th scope="col">Eliminar</th>
+                <th scope="col">Lugar</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Modalidad</th>
             </tr>
           </thead>
           <tbody>
-            {%for evento in events.all %}
             <tr>
                 <td > {{ evento.name }} </td>
                 <td > {{ evento.start_date }} </td>
                 <td > {{ evento.finish_date }} </td>
-                <td > {{ evento.creation_date }} </td>
-                <td > <a href="/update/{{evento.id}}"><i class="far fa-edit"></i></a> </td>
-                <td > <a href="/details/{{evento.id}}"><i class="fas fa-info-circle"></i></a> </td>
-                <td > <div class="delete" todelete="{{evento.id}}"><i class="fas fa-trash-alt"></i></div></td>
-
+                <td > {{ evento.place }} </td>
+                <td > {{ evento.address }} </td>
+                <td > {{ evento.type.name }} </td>
             </tr>
-            {% endfor %}
           </tbody>
 
       </table>
       <br><br><br>
-      <a href="/create/" style="font-size: 30px; text-decoration: none">Crear Evento  <i class="fas fa-calendar-plus"></i></a>
-  {% else %}
-    <h2 style="text-align : center;">Sesion no iniciada</h2>
-
-    <h3 style="text-align : center;"> Inicio de sesion</h3>
-
-    <form action="" style="text-align : center;" id="login">
-        email:<br>
-        <input type="text" name="email" id="email">
-        <br>
-        password:<br>
-        <input type="password" name="password" id="password">
-        <br><br>
-        <input type="submit" value="Enviar"><br><br>
-        <a href="/register/"> Registrarse  </a><br><br>
-        <a href="//">  Olvido su contrasena?</a><br><br>
-
-    </form>
-
-  {% endif %}
+      <a href="/index/"> Volver  </a><br><br>
 
 </body>
 
